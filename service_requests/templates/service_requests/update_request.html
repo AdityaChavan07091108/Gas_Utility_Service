@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Request Status</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f9fc;
+            color: #2e3440;
+            margin: 20px;
+        }
+        h1 {
+            color: #2e3440;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d8dee9;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #88c0d0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5e81ac;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Request Status</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Closed">Closed</option>
+        </select>
+        <button type="submit">Update Status</button>
+    </form>
+</body>
+</html>

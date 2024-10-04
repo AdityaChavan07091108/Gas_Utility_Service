@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request Status</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f7f8fc;
+            color: #2e3440;
+        }
+        h1 {
+            text-align: center;
+            color: #4c566a;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        li {
+            background-color: #eceff4;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Service Requests</h1>
+    {% if service_requests %}
+        <ul>
+        {% for request in service_requests %}
+            <li>
+                Request ID: {{ request.id }} - Status: {{ request.status }} <br>
+                <strong>Service Type:</strong> {{ request.service_type }} <br>
+                <strong>Description:</strong> {{ request.description }} <br>
+                <strong>Submitted On:</strong> {{ request.created_at }} <br>
+                <strong>Resolved At:</strong> {{ request.resolved_at|default:"Pending" }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No service requests found for this customer.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Service Request</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f7f8fc;
+            color: #2e3440;
+        }
+        h1 {
+            color: #4c566a;
+            text-align: center;
+            font-size: 28px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #d8dee9;
+            background-color: #eceff4;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .error {
+            color: #bf616a;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #81a1c1;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #5e81ac;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create a New Service Request</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_service_type">Service Type:</label>
+        {{ form.service_type }}
+        {% if form.service_type.errors %}
+            <div class="error">{{ form.service_type.errors }}</div>
+        {% endif %}
+
+        <label for="id_description">Details:</label>
+        {{ form.description }}
+        {% if form.description.errors %}
+            <div class="error">{{ form.description.errors }}</div>
+        {% endif %}
+
+        <label for="id_attachment">Attachment:</label>
+        {{ form.attachment }}
+        {% if form.attachment.errors %}
+            <div class="error">{{ form.attachment.errors }}</div>
+        {% endif %}
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

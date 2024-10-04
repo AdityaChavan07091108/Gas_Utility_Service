@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Service Requests</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f9fc;
+            color: #2e3440;
+            margin: 20px;
+        }
+        h1 {
+            color: #2e3440;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e5e9f0;
+            border-radius: 4px;
+        }
+        a {
+            text-decoration: none;
+            color: #88c0d0;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Service Requests</h1>
+    <ul>
+        {% for request in service_requests %}
+            <li>
+                <a href="{% url 'track_request' request.id %}">Request ID: {{ request.id }}</a>
+                - Status: {{ request.status }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

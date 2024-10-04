@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Service Request</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f9fc;
+            color: #2e3440;
+            margin: 20px;
+        }
+        h1 {
+            color: #2e3440;
+        }
+        p {
+            margin: 10px 0;
+        }
+        strong {
+            color: #4c566a;
+        }
+        a {
+            text-decoration: none;
+            color: #88c0d0;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Track Your Service Request</h1>
+
+    <h2>Service Request ID: {{ request_details.id }}</h2>
+    <p><strong>Service Type:</strong> {{ request_details.service_type }}</p>
+    <p><strong>Description:</strong> {{ request_details.description }}</p>
+    <p><strong>Status:</strong> {{ request_details.status }}</p>
+    <p><strong>Submitted On:</strong> {{ request_details.created_at }}</p>
+    <p><strong>Resolved At:</strong> {{ request_details.resolved_at|default:"Pending" }}</p>
+
+    <a href="{% url 'my_requests' %}">Back to My Requests</a>
+</body>
+</html>
